@@ -1,11 +1,14 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <TableComponent />
+  </div>
 </template>
 
 <script>
+import TableComponent from "./components/TableComponent";
 export default {
   name: "App",
-  components: {},
+  components: { TableComponent },
 };
 </script>
 
