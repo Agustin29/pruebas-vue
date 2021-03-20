@@ -3,7 +3,7 @@
     <div class="card">
       <h3 class="card-header text-center">Formulario con Vuelidate</h3>
       <div class="card-body">
-        <form @submit.prevent="handleSubmit">
+        <form @submit.prevent="submitForm">
           <div class="row mb-3">
             <div class="col-md-6">
               <label>Nombre:</label>
@@ -36,7 +36,7 @@
               />
               <div class="invalid-feedback">
                 <span v-if="!$v.apellido.required"
-                  >El nombre es requerido.</span
+                  >El apelido es requerido.</span
                 >
               </div>
               <!-- <div class="valid-feedback">
@@ -46,25 +46,15 @@
           </div>
           <div class="row">
             <div class="col-md">
-              <button
-                class="btn btn-outline-primary"
-                type="submit"
-                :disabled="submitStatus === 'PENDING'"
-              >
+              <button class="btn btn-outline-primary" @click="$v.$reset">
                 Guardar
               </button>
-              <!-- <span v-if="submitStatus === 'OK'">Gracias por su envio.</span>
-              <span v-if="submitStatus === 'ERROR'"
-                >Porfavor llene el formulario correctamente.</span
-              >
-              <span v-if="submitStatus === 'PENDING'">Sending...</span> -->
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
-  <!-- 'is-valid': !$v.form.nombre.$invalid, -->
 </template>
 
 <script>
@@ -87,12 +77,19 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
-      this.submit();
-      console.log(this.nombre, this.apellido);
+    submitForm() {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        this.submitStatus = "FAIL";
+      } else {
+        this.submitStatus = "SUCCESS";
+        this.nombre = "";
+        this.apellido = "";
+        console.log(this.nombre, this.apellido);
+      }
     },
 
-    submit() {
+    /* submit() {
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
@@ -101,10 +98,10 @@ export default {
         this.submitStatus = "PENDING";
         this.submitStatus = "OK";
         setTimeout(() => {
-            this.submitStatus = "OK";
+          this.submitStatus = "OK";
         }, 500);
       }
-    },
+    }, */
 
     clearForm() {
       this.nombre = "";
