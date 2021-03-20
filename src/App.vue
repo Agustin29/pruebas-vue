@@ -1,11 +1,14 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <FormValidate />
+  </div>
 </template>
 
 <script>
+import FormValidate from "./components/FormValidate";
 export default {
   name: "App",
-  components: {},
+  components: { FormValidate },
 };
 </script>
 

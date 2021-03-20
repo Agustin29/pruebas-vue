@@ -9,7 +9,8 @@
   "dependencies": {
     "bootstrap": "^5.0.0-beta2",
     "register-service-worker": "^1.7.1",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuelidate": "^0.7.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-pwa": "~4.5.0",
