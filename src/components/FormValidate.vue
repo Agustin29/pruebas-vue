@@ -17,7 +17,9 @@
                 }"
               />
               <div class="invalid-feedback">
-                <span v-if="!$v.nombre.required">El nombre es requerido.</span>
+                <span v-if="!$v.nombre.required && $v.nombre.$dirty"
+                  >El nombre es requerido.</span
+                >
               </div>
               <!-- <div class="valid-feedback">
                 <span v-if="!$v.nombre.required">El nombre es requerido.</span>
@@ -35,7 +37,7 @@
                 }"
               />
               <div class="invalid-feedback">
-                <span v-if="!$v.apellido.required"
+                <span v-if="!$v.apellido.required && $v.apellido.$dirty"
                   >El apelido es requerido.</span
                 >
               </div>
@@ -46,7 +48,7 @@
           </div>
           <div class="row">
             <div class="col-md">
-              <button class="btn btn-outline-primary" @click="$v.$reset">
+              <button class="btn btn-outline-primary">
                 Guardar
               </button>
             </div>
