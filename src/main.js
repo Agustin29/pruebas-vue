@@ -3,9 +3,14 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 /* BOOTSTRAP */
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js"
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 /* bootstrap-table */
+import "bootstrap-table/dist/bootstrap-table.min.css";
+import "./plugins/jquery";
+import "@popperjs/core/dist/umd/popper.min.js";
+import "bootstrap-table/dist/bootstrap-table.js";
+
 // import './plugins/table.js'
 
 Vue.config.productionTip = false;

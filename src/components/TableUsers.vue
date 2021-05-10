@@ -5,11 +5,12 @@
 </template>
 
 <script>
+import BootstrapTable from "bootstrap-table/dist/bootstrap-table-vue.esm.js";
 import axios from "../config/api";
 export default {
   name: "TableUsers",
   components: {
-    //   BootstrapTable
+    BootstrapTable,
   },
   data() {
     return {
