@@ -5,10 +5,6 @@ import "./registerServiceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-/* vue-table-2 */
-import { ServerTable, ClientTable, Event } from "vue-tables-2";
-Vue.use(ClientTable);
-
 Vue.config.productionTip = false;
 
 new Vue({
