@@ -4,7 +4,11 @@
     <hr />
     <div class="table-responsive">
       <div class="container-fluid clearfix mb-3">
-        <MostrarData />
+        <MostrarData
+          :currentEntries="currentEntries"
+          :showEntries="showEntries"
+          :paginateEntries="paginateEntries"
+        />
         <BuscarData />
       </div>
       <TableData :users="users" />
@@ -35,6 +39,9 @@ export default {
   data() {
     return {
       users: [],
+      currentEntries: 5,
+      showEntries: [5, 15, 25, 50, 100],
+      filteredEntries: [],
       current_page: "",
       from: "",
       last_page: "",
@@ -42,6 +49,14 @@ export default {
       to: "",
       total: "",
     };
+  },
+  created() {
+    this.loadUsers().then((res) => {
+      this.filteredEntries = $array.paginate(this.users)(
+        1,
+        this.currentEntries
+      );
+    });
   },
   mounted() {
     this.loadUsers();
@@ -62,6 +77,12 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    paginateEntries() {
+      this.filteredEntries = $array.paginate(this.users)(
+        1,
+        this.currentEntries
+      );
     },
   },
 };

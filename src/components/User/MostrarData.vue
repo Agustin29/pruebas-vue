@@ -1,13 +1,14 @@
 <template>
   <div class="float-start">
     <div class="input-group input-group-sm mb-3">
-      <label class="input-group-text" for="inputGroupSelect01">Mostrar:</label>
-      <select class="form-select">
-        <option>5</option>
-        <option>15</option>
-        <option>25</option>
-        <option>50</option>
-        <option>100</option>
+      <label class="input-group-text">Mostrar:</label>
+      <select class="form-select" v-model="currentEntries" @change="paginateEntries">
+        <option
+          v-for="showEntrie in showEntries"
+          :key="showEntrie"
+          :value="showEntrie"
+          >{{ showEntrie }}</option
+        >
       </select>
     </div>
   </div>
@@ -16,6 +17,11 @@
 <script>
 export default {
   name: "MostrarData",
+  props: {
+    currentEntries: Number,
+    showEntries: Array,
+    paginateEntries: Function
+  },
 };
 </script>
 
