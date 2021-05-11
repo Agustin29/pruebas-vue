@@ -16,7 +16,12 @@
           </select>
         </div>
         <div class="form-text float-end">
-          <input type="text" class="form-control form-control-sm" />
+          <div class="col-auto">
+            <div class="input-group">
+              <div class="input-group-text">Buscar:</div>
+              <input type="text" class="form-control" />
+            </div>
+          </div>
         </div>
       </div>
       <table class="table table-bordered table-hover table-sm">
