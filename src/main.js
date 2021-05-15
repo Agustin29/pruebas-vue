@@ -4,10 +4,12 @@ import "./registerServiceWorker";
 /* BOOTSTRAP */
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
-/* vue-table-2 */
-import { ServerTable, ClientTable, Event } from "vue-tables-2";
-Vue.use(ClientTable);
+/* jquery */
+import JQuery from "jquery";
+window.$ = JQuery;
+/* Datatables.net */
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import "datatables.net/js/jquery.dataTables.min.js";
 
 Vue.config.productionTip = false;
 
