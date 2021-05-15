@@ -48,7 +48,6 @@ export default {
         .get("/users")
         .then((res) => {
           this.users = res.data.data;
-          console.log(res);
           this.tFootSearch();
           this.table();
         })
