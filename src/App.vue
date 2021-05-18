@@ -101,4 +101,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+/* @import "assets/theme/css/dataTables.bootstrap5.min.css"; */
+</style>
