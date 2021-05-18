@@ -2,6 +2,14 @@
   <div class="container-fluid">
     <p class="h1 text-center">Tabla de Usuarios</p>
     <hr />
+    <div class="d-flex align-items-center mb-2" v-if="this.loading === false">
+      <strong>Cargando datos de la tabla...</strong>
+      <div
+        class="spinner-border ms-auto"
+        role="status"
+        aria-hidden="true"
+      ></div>
+    </div>
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-sm" id="tableUsers">
         <thead>
@@ -37,19 +45,24 @@ export default {
   data() {
     return {
       users: [],
+      loading: false,
     };
   },
   mounted() {
     this.loadUsers();
   },
   methods: {
+    cargando() {
+      this.loading = true;
+    },
     loadUsers() {
       axios
         .get("/users")
         .then((res) => {
-          this.users = res.data.data;
+          this.users = res.data;
+          this.cargando();
           this.tFootSearch();
-          this.table();
+          this.tableData();
         })
         .catch((error) => {
           console.log(error);
@@ -63,16 +76,17 @@ export default {
         });
       });
     },
-    table() {
+    tableData() {
       this.$nextTick(() => {
         $("#tableUsers").DataTable({
+          data: this.users,
+          columns: [{ data: "id" }, { data: "name" }, { data: "email" }],
           initComplete: function() {
             // Apply the search
             this.api()
               .columns()
               .every(function() {
                 var that = this;
-
                 $("input", this.footer()).on("keyup change clear", function() {
                   if (that.search() !== this.value) {
                     that.search(this.value).draw();
