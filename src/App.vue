@@ -55,8 +55,8 @@ export default {
     cargando() {
       this.loading = true;
     },
-    loadUsers() {
-      axios
+    async loadUsers() {
+      await axios
         .get("/users")
         .then((res) => {
           this.users = res.data;
